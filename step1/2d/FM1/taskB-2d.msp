@@ -1,0 +1,82 @@
+GeoSys-MAT-SP: Solid Properties ------------------------------------
+#SOLID_PROPERTIES  // left intact material OPA
+  $DENSITY
+1 -2300.
+ 
+  $ELASTICITY
+    POISSION   0.3275
+    YOUNGS_MODULUS
+      1 6.106e+9
+ $BIOT_CONSTANT
+  1.000
+ $GRAVITY_CONSTANT
+  0    
+#SOLID_PROPERTIES  // left damage zone
+  $DENSITY
+1 -2300.
+ 
+  $ELASTICITY
+    POISSION   0.3275
+    YOUNGS_MODULUS
+      1 6.106e+9
+ $BIOT_CONSTANT
+  1.000
+ $GRAVITY_CONSTANT
+  0    
+  
+
+#SOLID_PROPERTIES // fault that must break
+  $DENSITY
+1 -2300.
+ 
+  $ELASTICITY
+    POISSION   -0.5
+; with only 1 Layer instead 4 (fault thickness = 0.0233 m) of the Fault E = fault_normal_stiffness * fault_thickness = 20 GPa * (0.0233 / 4) / 1.5 = 77.667 MPa
+    YOUNGS_MODULUS
+;    10  77.667e+6 77.667e+6 0.0 38.8335e+6 0 -0.906307787036650 0.422618261740699
+     1 310.667e+6
+ $BIOT_CONSTANT
+  1.00000000
+
+ $PLASTICITY
+   MOHR-COULOMB  
+   1.e0          //cohesion
+   22           //friction angle
+   0.0          //dilation angle         
+   1.e16        //tensile strength
+   0            //curve number for strain hardening of cohesion
+   0            //curve number for strain hardening of friction angle   
+   1            // flag to force tension value to be the one set here above
+ $WEAKNESS_PLANE
+  MICRO_STRUCTURE_TENSOR 1 1 1  //no microstruct 
+  WEAKPLANE_NORM 0 -0.9063077870367 0.42261826174  //bedding planes (BEDDING_NORM still recognized)
+  UNIAXI_COMP_CURVE 0 0.1
+  TENSION_CURVE  0 0.1
+
+  
+#SOLID_PROPERTIES // right damage zone
+  $DENSITY
+1 -2300.
+ 
+  $ELASTICITY
+    POISSION   0.3275
+    YOUNGS_MODULUS
+      1 6.106e+9
+ $BIOT_CONSTANT
+  1.000
+ $GRAVITY_CONSTANT
+  0    
+#SOLID_PROPERTIES // right intact material OPA
+  $DENSITY
+1 -2300.
+ 
+  $ELASTICITY
+    POISSION   0.3275
+    YOUNGS_MODULUS
+      1 6.106e+9
+ $BIOT_CONSTANT
+  1.000
+ $GRAVITY_CONSTANT
+  0    
+
+#STOP

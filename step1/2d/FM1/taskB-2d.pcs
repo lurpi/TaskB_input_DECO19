@@ -1,0 +1,26 @@
+GeoSys-PCS: Processes ------------------------------------------------
+
+#PROCESS
+ $PCS_TYPE
+  LIQUID_FLOW
+  DEFORMATION
+ $NUM_TYPE
+  NEW
+ $ELEMENT_MATRIX_OUTPUT 
+   0 
+ $BOUNDARY_CONDITION_OUTPUT
+
+#STOP
+    
+#PROCESS
+ $PCS_TYPE
+  LIQUID_FLOW
+  DEFORMATION
+ $MEMORY_TYPE
+ 0  
+ $ST_RHS
+  1  
+ $NEGLECT_H_INI_EFFECT
+  2  
+ 
+#STOP
