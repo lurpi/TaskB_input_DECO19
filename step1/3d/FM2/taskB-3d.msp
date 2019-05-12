@@ -39,7 +39,7 @@ GeoSys-MAT-SP: Solid Properties ------------------------------------
    MOHR-COULOMB 
    1.e0          //cohesion
    22           //friction angle
-   0.0          //dilation angle         
+   10.0          //dilation angle         
    1.e16        //tensile strength
    0            //curve number for strain hardening of cohesion
    0            //curve number for strain hardening of friction angle  
